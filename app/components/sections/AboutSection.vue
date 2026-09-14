@@ -38,6 +38,12 @@ useSeoMeta({
   description: "mon À propos",
   ogTitle: "À propos",
   ogDescription: "'jour",
+  ogType: "website",
+  ogImage: 'https://www.doume.be/favicon.ico',
+
+  twitterTitle: "À propos",
+  twitterImage: "https://www.doume.be/favicon.ico",
+
 })
 </script>
 
