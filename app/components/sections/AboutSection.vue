@@ -6,8 +6,8 @@ import Background from "./Background.vue"
 
 const sections = [
   { id: "about", label: "À propos" },
-  { id: "parcours", label: "Parcours" },
   { id: "competences", label: "Compétences" },
+  { id: "appareils", label: "Appareils" },
 ]
 
 const activeIndex = ref(0)
@@ -77,20 +77,91 @@ useSeoMeta({
         :rainbow="false"
       />
 
-      <div class="absolute inset-0 z-20 flex items-center text-white mix-blend-difference justify-center px-6 md:px-16 pointer-events-none">
-        <div class="max-w-5xl mx-auto w-full">
-          <p v-for="(paragraph, j) in BIOGRAPHY[i]" :key="j" class="mb-4">
+      <div class="absolute inset-0 z-20 flex items-center text-white mix-blend-difference justify-center px-6 md:px-16">
+
+        <div
+          v-if="BIOGRAPHY[i].type === 'presentation'"
+          class="max-w-5xl mx-auto w-full pointer-events-none"
+        >
+          <p v-for="(paragraph, j) in BIOGRAPHY[i].texte" :key="j" class="mb-4">
             {{ paragraph }}
           </p>
         </div>
+
+        <div
+          v-else-if="BIOGRAPHY[i].type === 'skills-vertical'"
+          class="w-full h-full flex flex-row-reverse flex-wrap items-stretch justify-around gap-x-6 md:gap-x-10 py-16 pointer-events-none"
+        >
+          <div
+            v-for="(group, g) in BIOGRAPHY[i].texte"
+            :key="g"
+            class="flex flex-row-reverse items-start gap-x-3 md:gap-x-4"
+          >
+            <span
+              v-if="group.titre"
+              class="font-mono font-bold text-xl md:text-3xl tracking-[0.3em] leading-relaxed"
+              style="writing-mode: vertical-rl; text-orientation: mixed;"
+            >
+              {{ group.titre }}
+            </span>
+            <span
+              v-for="(skill, j) in group.items"
+              :key="j"
+              class="font-mono text-lg md:text-2xl tracking-[0.3em] leading-relaxed"
+              style="writing-mode: vertical-rl; text-orientation: mixed;"
+            >
+              {{ skill }}
+            </span>
+          </div>
+        </div>
+
+        <div
+          v-else-if="BIOGRAPHY[i].type === 'skills-horizontal'"
+          class="max-w-5xl mx-auto w-full flex flex-col gap-8 py-8 pointer-events-none"
+        >
+          <div v-for="(group, g) in BIOGRAPHY[i].texte" :key="g">
+            <p
+              v-if="group.titre"
+              class="font-mono uppercase tracking-widest text-sm md:text-base text-white/70 mb-2"
+            >
+              {{ group.titre }}
+            </p>
+            <div class="flex flex-wrap gap-2 md:gap-3">
+              <span
+                v-for="(skill, j) in group.items"
+                :key="j"
+                class="font-mono text-sm md:text-lg border border-white/40 rounded-full px-3 py-1"
+              >
+                {{ skill }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          v-else-if="BIOGRAPHY[i].type === 'devices'"
+          class="max-w-5xl mx-auto w-full grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 pointer-events-auto"
+        >
+          <div
+            v-for="(device, j) in BIOGRAPHY[i].texte"
+            :key="j"
+            class="border border-white/30 rounded-lg p-4 transition-colors hover:border-white/70 hover:bg-white/5"
+          >
+            <p class="font-semibold">{{ device.nom }}</p>
+            <p v-if="device.description" class="text-sm text-white/70 mt-1">
+              {{ device.description }}
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
 
 
     <nav class="fixed right-6 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-4 mix-blend-difference">
-      
+
       <div v-if="sections.length === 3 || sections.length === 2">
-        <button 
+        <button
           v-if="activeIndex === 0" @click="previous" class="mt-4 text-white/60 hover:text-white" aria-label="Previous section" :disabled="activeIndex === 0" :class="activeIndex === 0 ? 'text-white/20 cursor-not-allowed' : 'text-white/60 hover:text-white'">⤒</button>
         <button v-if="activeIndex === 1" @click="previous" class="mt-4 text-white/60 hover:text-white" aria-label="Previous section">⤉</button>
         <button v-if="activeIndex === 2 && sections.length === 3" @click="previous" class="mt-4 text-white/60 hover:text-white" aria-label="Previous section">↥</button>
