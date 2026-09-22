@@ -66,7 +66,7 @@ export type Biography = BiographyEntry[]
 export const BIOGRAPHY: Biography = [
   {
     type: "presentation",
-    texte: ["'jour, ", "test", "..."],
+    texte: ["'jour, je suis un élève de première au lycée Louis Bascan.", "J'ai pas d'idées d'autres trucs à rajouter, donc pour l'instant, ce sera vide", ],
   },
   {
     type: "skills-vertical",
@@ -81,6 +81,9 @@ export const BIOGRAPHY: Biography = [
     texte: [
       { nom: "Lenovo ThinkPad x13 gen4", description: "Ordinateur que j'utilise au quotidien" },
       { nom: "FairPhone Gen. 6", description: "Mon téléphone principal, dont je suis fier (FairPhone est très bien je trouve, en tout cas, pour mon usage)" },
+      { nom: "Unowhy Gen2 2025", description: "Ordinateur donné par la RIDF lors de mon année de seconde" },
+      { nom: "Asus Chromebook", description: "Ordinateur des secondes de 2026, il est complètement bloqué de pourtout, que ce soit le mode dev interdit, le playstore avec une whitelist, le changement de fond d'écran bloqué, et la liste est encore longue..." },
+      { nom: "", description: "" },
     ],
   },
 ]
