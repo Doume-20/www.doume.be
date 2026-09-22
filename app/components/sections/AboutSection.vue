@@ -88,6 +88,7 @@ useSeoMeta({
           </p>
         </div>
 
+        <!--! Problème à régler, à un moment... -->
         <div
           v-else-if="BIOGRAPHY[i].type === 'skills-vertical'"
           class="w-full h-full flex flex-row-reverse flex-wrap items-stretch justify-around gap-x-6 md:gap-x-10 py-16 pointer-events-none"
