@@ -105,14 +105,18 @@ useSeoMeta({
             >
               {{ group.titre }}
             </span>
-            <span
+            <div
               v-for="(skill, j) in group.items"
               :key="j"
-              class="font-mono text-lg md:text-2xl tracking-[0.3em] leading-relaxed"
-              style="writing-mode: vertical-rl; text-orientation: mixed;"
+              class="flex flex-col items-center gap-y-2"
             >
-              {{ skill }}
-            </span>
+              <img
+                :src="`/icons/${skill.image}.svg`"
+                :alt="skill.image"
+                :title="skill.hl"
+                class="w-6 h-6 md:w-8 md:h-8"
+              />
+            </div>
           </div>
         </div>
 

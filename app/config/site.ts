@@ -53,7 +53,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
   }
 ]
 
-export type SkillGroup = { titre?: string; items: string[] }
+export type Items = { image?: string; hl?: string }
+export type SkillGroup = { titre?: string; items: Items[] }
 
 export type BiographyEntry =
   | { type: "presentation"; texte: string[] }
@@ -71,9 +72,33 @@ export const BIOGRAPHY: Biography = [
   {
     type: "skills-vertical",
     texte: [
-      { titre: "IDE", items: ["VS Code", "Neovim", "Pycharm", ] },
-      { titre: "Langages", items: ["Python", "C++", "Vue", "JS", ] },
-      { titre: "Frameworks", items: ["Nuxt", "Tailwind CSS", ] },
+      { titre: "IDE", items: [
+        { image: "VSCode", hl: "Utilisé actuellement" }, 
+        { image: "Neovim", hl: "Utilisé avec NV Chad" }, 
+        { image: "Pycharm", hl: "Utilisé pendant 30j seulement" }
+      ]},
+      { titre: "Langages", items: [
+        { image: "Python", hl: "Premier langage de programmation appris" },
+        { image: "Cpp", hl: "Pour programmer des arduinos" },
+        { image: "Vue", hl: "Le langage utilisé pour ce site" },
+        { image: "JS", hl: "Aussi utilisé pour ce site" },
+      ]},
+      { titre: "Frameworks", items: [
+        { image: "Nuxt", hl: "Utilisé pour faire ce site" },
+        { image: "Tailwind CSS", hl: "Aussi utilisé pour ce site" },
+      ]},
+      { titre: "Versionning", items: [
+        { image: "Git", hl: "Afin d'avoir un moyen de changer de version facilement" },
+        { image: "Github", hl: "Site utilisé pour host tout mon code et autre" },
+      ]},
+      { titre: "Systèmes", items: [
+        { image: "Arch", hl: "I use Arch btw" },
+        { image: "Windows", hl: "MicroSlop ?" },
+        { image: "Android", hl: "Utilisé avant" },
+        { image: "e/OS", hl: "A été flashé sur mon tel en août, donc récent" },
+        { image: "Ubuntu", hl: "Trash (mon opinion)" },
+        { image: "Kali", hl: "Trop d'outils dessus, mais bien en daily" },
+      ]},
     ],
   },
   {
@@ -81,8 +106,8 @@ export const BIOGRAPHY: Biography = [
     texte: [
       { nom: "Lenovo ThinkPad x13 gen4", description: "Ordinateur que j'utilise au quotidien" },
       { nom: "FairPhone Gen. 6", description: "Mon téléphone principal, dont je suis fier (FairPhone est très bien je trouve, en tout cas, pour mon usage)" },
-      { nom: "Unowhy Gen2 2025", description: "Ordinateur donné par la RIDF lors de mon année de seconde" },
-      { nom: "Asus Chromebook", description: "Ordinateur des secondes de 2026, il est complètement bloqué de pourtout, que ce soit le mode dev interdit, le playstore avec une whitelist, le changement de fond d'écran bloqué, et la liste est encore longue..." },
+      { nom: "Unowhy Gen2 2025", description: "Ordinateur donné par la RIDF lors de mon année de seconde (2025)" },
+      { nom: "Asus Chromebook", description: "Ordinateur des secondes de 2026, qui est complètement bloqué de partout" },
       { nom: "", description: "" },
     ],
   },
